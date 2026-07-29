@@ -75,6 +75,19 @@ namespace CalculadoraTeste
             Assert.Equal(0.5, resultado);
         }
 
+        // Teste de divisão por zero
+        [Fact]
+        public void DeveLancarExcecaoAoDividirPorZero()
+        {
+            // Arrange - preparar o cenário
+            int num1 = 5;
+            int num2 = 0;
+
+            // Act e Assert - verificar se a exceção foi lançada
+            var exception = Assert.Throws<ArgumentException>(() => _calc.Dividir(num1, num2));
+            Assert.Equal("O divisor não pode ser zero.", exception.Message);
+        }
+
         [Fact] // Indica que é um método de teste
         public void DeveRetornarTruePois10EhNumeroPar()
         {
